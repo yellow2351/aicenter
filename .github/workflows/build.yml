@@ -38,10 +38,17 @@ jobs:
         chmod +x scripts/prepare-android-assets.sh
         ./scripts/prepare-android-assets.sh
     
-    - name: Build APK with Gradle
+    - name: Generate Gradle Wrapper
       run: |
         cd android
-        gradle assembleDebug --no-daemon
+        # Use system gradle to generate wrapper
+        gradle wrapper --gradle-version 8.4 --no-daemon
+    
+    - name: Build APK
+      run: |
+        cd android
+        chmod +x gradlew
+        ./gradlew assembleDebug --no-daemon
     
     - name: Upload APK artifact
       uses: actions/upload-artifact@v4
