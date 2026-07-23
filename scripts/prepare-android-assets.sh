@@ -34,7 +34,7 @@ cp -r server.js "$ASSETS_DIR/app/"
 cp -r package.json "$ASSETS_DIR/app/"
 cp -r public "$ASSETS_DIR/app/"
 cp -r services "$ASSETS_DIR/app/"
-cp -r utils "$ASSETS_DIR/app/"
+[ -d utils ] && [ "$(ls -A utils)" ] && cp -r utils "$ASSETS_DIR/app/" || true
 cp -r config "$ASSETS_DIR/app/"
 
 # 安装应用依赖
