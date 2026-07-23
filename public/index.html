@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Agent 中控台</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- 头部 -->
+    <header class="header">
+      <h1>🤖 AI Agent 中控台</h1>
+      <p>统一管理和控制 Termux 上的 AI 平台工具</p>
+    </header>
+
+    <!-- 导航 -->
+    <nav class="nav">
+      <div class="nav-item active" data-page="dashboard">仪表盘</div>
+      <div class="nav-item" data-page="sillytavern">SillyTavern</div>
+      <div class="nav-item" data-page="astrbot">AstrBot</div>
+      <div class="nav-item" data-page="models">模型管理</div>
+      <div class="nav-item" data-page="system">系统信息</div>
+    </nav>
+
+    <!-- 仪表盘页面 -->
+    <div id="dashboard-page" class="page">
+      <div class="neu-card">
+        <h2 class="mb-3">服务状态总览</h2>
+        <div class="service-grid" id="services-grid">
+          <!-- 动态生成 -->
+        </div>
+      </div>
+    </div>
+
+    <!-- SillyTavern 页面 -->
+    <div id="sillytavern-page" class="page" style="display: none;">
+      <div class="neu-card">
+        <h2 class="mb-3">SillyTavern 管理</h2>
+        
+        <div class="mb-3">
+          <h3 class="mb-2">角色卡</h3>
+          <div id="characters-list" class="list">
+            <!-- 动态生成 -->
+          </div>
+          <button class="neu-btn primary mt-2" onclick="loadCharacters()">刷新列表</button>
+        </div>
+
+        <div class="mb-3">
+          <h3 class="mb-2">世界书</h3>
+          <div id="worldbooks-list" class="list">
+            <!-- 动态生成 -->
+          </div>
+          <button class="neu-btn primary mt-2" onclick="loadWorldBooks()">刷新列表</button>
+        </div>
+
+        <div class="mb-3">
+          <h3 class="mb-2">API 预设</h3>
+          <div id="presets-list" class="list">
+            <!-- 动态生成 -->
+          </div>
+          <button class="neu-btn primary mt-2" onclick="loadPresets()">刷新列表</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- AstrBot 页面 -->
+    <div id="astrbot-page" class="page" style="display: none;">
+      <div class="neu-card">
+        <h2 class="mb-3">AstrBot 管理</h2>
+        
+        <div class="mb-3">
+          <h3 class="mb-2">插件</h3>
+          <div id="plugins-list" class="list">
+            <!-- 动态生成 -->
+          </div>
+          <button class="neu-btn primary mt-2" onclick="loadPlugins()">刷新列表</button>
+        </div>
+
+        <div class="mb-3">
+          <h3 class="mb-2">平台适配器</h3>
+          <div id="adapters-list" class="list">
+            <!-- 动态生成 -->
+          </div>
+          <button class="neu-btn primary mt-2" onclick="loadAdapters()">刷新列表</button>
+        </div>
+
+        <div class="mb-3">
+          <h3 class="mb-2">配置</h3>
+          <div id="config-viewer" class="neu-card inset">
+            <pre id="config-content">加载中...</pre>
+          </div>
+          <button class="neu-btn primary mt-2" onclick="loadConfig()">刷新配置</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 模型管理页面 -->
+    <div id="models-page" class="page" style="display: none;">
+      <div class="neu-card">
+        <h2 class="mb-3">模型管理</h2>
+        
+        <div class="mb-3">
+          <h3 class="mb-2">选择服务</h3>
+          <select id="model-service-select" class="form-select" onchange="loadModels()">
+            <option value="ollama">Ollama</option>
+            <option value="kobold">Kobold AI</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <h3 class="mb-2">可用模型</h3>
+          <div id="models-list" class="list">
+            <!-- 动态生成 -->
+          </div>
+          <button class="neu-btn primary mt-2" onclick="loadModels()">刷新列表</button>
+        </div>
+
+        <div class="mb-3">
+          <h3 class="mb-2">快速测试</h3>
+          <div class="form-group">
+            <label class="form-label">选择模型</label>
+            <select id="test-model-select" class="form-select">
+              <!-- 动态生成 -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">测试消息</label>
+            <textarea id="test-message" class="form-textarea" placeholder="输入测试消息...">你好，请介绍一下自己</textarea>
+          </div>
+          <button class="neu-btn primary" onclick="sendTestMessage()">发送测试</button>
+          <div id="test-result" class="neu-card inset mt-2" style="display: none;">
+            <pre id="test-result-content"></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 系统信息页面 -->
+    <div id="system-page" class="page" style="display: none;">
+      <div class="neu-card">
+        <h2 class="mb-3">系统信息</h2>
+        <div id="system-info" class="neu-card inset">
+          <pre>加载中...</pre>
+        </div>
+        <button class="neu-btn primary mt-2" onclick="loadSystemInfo()">刷新信息</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast 容器 -->
+  <div id="toast-container"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

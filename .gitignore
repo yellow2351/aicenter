@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+android/.gradle/
+android/app/build/
+
+# Build outputs
+*.apk
+*.aab
+*.zip
+temp/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Runtime data
+.pid
+.env/
+.app/
+
+# Android
+android/local.properties
+android/captures/
+android/externalNativeBuild/
+
+# Temporary files
+*.tmp
+*.bak

@@ -1,0 +1,34 @@
+{
+  "port": 3000,
+  "services": {
+    "sillytavern": {
+      "enabled": true,
+      "port": 8000,
+      "path": "~/SillyTavern",
+      "command": "node server.js"
+    },
+    "astrbot": {
+      "enabled": true,
+      "port": 6185,
+      "path": "~/AstrBot",
+      "command": "python main.py"
+    },
+    "kobold": {
+      "enabled": false,
+      "port": 5001,
+      "path": "~/KoboldAI-Client",
+      "command": "python aiserver.py"
+    },
+    "ollama": {
+      "enabled": true,
+      "port": 11434,
+      "path": "",
+      "command": "ollama serve"
+    }
+  },
+  "features": {
+    "autoRefresh": true,
+    "refreshInterval": 5000,
+    "notifications": true
+  }
+}

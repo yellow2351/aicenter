@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AI Agent 中控台</string>
+    <string name="notification_channel_name">Node.js 服务</string>
+    <string name="notification_channel_description">AI Agent 中控台后台服务</string>
+    <string name="notification_title">AI Agent 中控台</string>
+    <string name="notification_text">Node.js 服务正在运行</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.AIControlCenter" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">#6c5ce7</item>
+        <item name="colorPrimaryVariant">#a29bfe</item>
+        <item name="colorOnPrimary">#ffffff</item>
+        <item name="colorSecondary">#00b894</item>
+        <item name="colorSecondaryVariant">#00cec9</item>
+        <item name="colorOnSecondary">#ffffff</item>
+        <item name="android:statusBarColor">#e0e5ec</item>
+        <item name="android:windowBackground">#e0e5ec</item>
+    </style>
+</resources>
